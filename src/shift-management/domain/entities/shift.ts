@@ -1,6 +1,6 @@
 import { ShiftWithNoName } from '../error/shift-with-no-name';
-import { uuidGenerator } from '../../../shared/infrastructure/identifiant-generator/uuid-generator';
-import { dateGenerator } from '../../../shared/infrastructure/date-generator/date-generator';
+import { uuidGenerator } from '../../../shared/domain/identifiant-generator/uuid-generator';
+import { dateGenerator } from '../../../shared/domain/date-generator/date-generator';
 
 export class Shift {
   id: string;

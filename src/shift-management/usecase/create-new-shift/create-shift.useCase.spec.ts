@@ -3,9 +3,9 @@ import { ShiftRepository } from '../../domain/ports/shift-repository';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Shift } from '../../domain/entities/shift';
 import { ShopManagementGatewaysModule } from '../../infrastructure/gateways/shop-management-gateways.module';
-import { uuidGenerator } from '../../../shared/infrastructure/identifiant-generator/uuid-generator';
+import { uuidGenerator } from '../../../shared/domain/identifiant-generator/uuid-generator';
 import { v4 } from 'uuid';
-import { dateGenerator } from '../../../shared/infrastructure/date-generator/date-generator';
+import { dateGenerator } from '../../../shared/domain/date-generator/date-generator';
 
 describe('Unit test | Use case | add new shift ', () => {
   let shopRepository: ShiftRepository;
