@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreateShiftUseCase } from '../../../usecase/create-new-shift/create-shift-use-case.service';
 import { CreateShiftController } from './create-shift.controller';
-import { ShiftDto } from './entities/shift-dto';
+import { ShiftDto } from './dto/shift-dto';
 import { ShopManagementGatewaysModule } from '../../gateways/shop-management-gateways.module';
 import { ShiftManagementUseCaseModule } from '../../../usecase/shift-management-use-case.module';
 
@@ -25,7 +25,7 @@ describe('Unit test | Controller | add new shift', () => {
   describe('add a new product to the shop catalogue', () => {
     it('should insert a new product into the catalogue', async () => {
       //Given
-      jest.spyOn(addNewShiftUseCase, 'handle').mockImplementation();
+      jest.spyOn(addNewShiftUseCase, 'execute').mockImplementation();
 
       const productInput: ShiftDto = {
         name: 'shift for CHU Robert julien',
@@ -35,10 +35,10 @@ describe('Unit test | Controller | add new shift', () => {
       await addNewShiftController.createShift(productInput);
 
       //Then
-      expect(addNewShiftUseCase.handle).toHaveBeenCalledWith({
+      expect(addNewShiftUseCase.execute).toHaveBeenCalledWith({
         name: 'shift for CHU Robert julien',
       });
-      expect(addNewShiftUseCase.handle).toHaveBeenCalledTimes(1);
+      expect(addNewShiftUseCase.execute).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -33,7 +33,7 @@ describe('Unit test | Use case | add new shift ', () => {
       const shift: Shift = Shift.create('shift CHU robert julien');
 
       //When
-      addNewProductUseCase.handle(shift);
+      addNewProductUseCase.execute(shift);
 
       //Then
       expect(shopRepository.addNewShift).toHaveBeenCalledTimes(1);

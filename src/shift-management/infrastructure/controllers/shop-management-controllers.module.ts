@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ShiftManagementUseCaseModule } from '../../usecase/shift-management-use-case.module';
-import { CreateShiftController } from './create-shift-controller/create-shift.controller';
+import { CreateShiftController } from './create-shift/create-shift.controller';
 
 @Module({
   imports: [ShiftManagementUseCaseModule],

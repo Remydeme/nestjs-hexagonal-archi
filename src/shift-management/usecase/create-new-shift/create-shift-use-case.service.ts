@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ShiftRepository } from '../../domain/ports/shift-repository';
-import { CreateShiftCommand } from './create-shift-command';
+import type { ShiftRepository } from '../../domain/ports/shift-repository';
+import { CreateShiftInput } from './create-shift-input';
 import { Shift } from '../../domain/entities/shift';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class CreateShiftUseCase {
     @Inject('ShiftRepository') private shiftRepository: ShiftRepository,
   ) {}
 
-  async handle(command: CreateShiftCommand): Promise<void> {
+  async execute(command: CreateShiftInput): Promise<void> {
     const shift = Shift.create(command.name);
     await this.shiftRepository.addNewShift(shift);
   }

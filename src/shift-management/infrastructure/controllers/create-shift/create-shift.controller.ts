@@ -1,28 +1,28 @@
 import {
   Body,
   Controller,
+  Get,
   HttpException,
   HttpStatus,
+  Param,
   Post,
 } from '@nestjs/common';
 import { CreateShiftUseCase } from '../../../usecase/create-new-shift/create-shift-use-case.service';
-import { ShiftDto } from './entities/shift-dto';
+import { ShiftDto } from './dto/shift-dto';
 
-import { CreateShiftCommand } from '../../../usecase/create-new-shift/create-shift-command';
+import { CreateShiftInput } from '../../../usecase/create-new-shift/create-shift-input';
 import { BadRequest } from '../../../../shared/domain/error/bad-request';
 
-@Controller()
+@Controller('shifts')
 export class CreateShiftController {
   constructor(private service: CreateShiftUseCase) {}
 
-  @Post('/shifts')
+  @Post('')
   async createShift(@Body() productInput: ShiftDto) {
-    const command: CreateShiftCommand = new CreateShiftCommand(
-      productInput.name,
-    );
+    const command: CreateShiftInput = new CreateShiftInput(productInput.name);
 
     try {
-      await this.service.handle(command);
+      await this.service.execute(command);
     } catch (error) {
       if (error instanceof BadRequest) {
         throw new HttpException(

@@ -1,4 +1,4 @@
-export class CreateShiftCommand {
+export class CreateShiftInput {
   name: string;
 
   constructor(name: string) {
